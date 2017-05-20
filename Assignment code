@@ -1,0 +1,59 @@
+import java.util.*;
+public class MyClass {
+	
+	public Scanner sc = new Scanner(System.in);
+
+	public static void main(String s[]){
+		
+		System.out.println("Hello");//Opening text
+		System.out.println("Please type in your age to continue");
+		AgeInput ai = new AgeInput();
+		ai.determineAge();
+		
+		
+		
+	}
+}
+
+class AgeInput{
+	
+	Scanner sc = new Scanner(System.in);
+	int userAge;
+	
+	void determineAge(){
+		
+		userAge = sc.nextInt();
+		
+		if(userAge < 0 ){
+			
+			try {
+				throw new negativeAgeException();//throws exception if age < 0
+			} catch (negativeAgeException e) {
+				System.out.println("Please input a proper age and not a negative number");
+				determineAge();
+			}
+		}
+		else{
+			System.out.println("Thank you for the information");// accepts if age > 0, or in other words if age is positive
+		}
+		
+	}
+	
+}
+
+class negativeAgeException extends Exception{//code for exception
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	negativeAgeException() {
+	     
+	   }
+	   public String toString(){
+	     return ("Sorry") ;
+	  }
+}
